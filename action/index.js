@@ -124,7 +124,7 @@ async function main() {
     production: true,
     event: github.context.payload,
   };
-  const progress = await api.githubActionsDeploy(projectId, req, files);
+  const progress = await api.gitHubActionsDeploy(projectId, req, files);
   let deployment;
   for await (const event of progress) {
     switch (event.type) {
