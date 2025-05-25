@@ -90,6 +90,7 @@ async function main() {
   );
   core.debug(`Discovered ${assets.size} assets`);
 
+  console.log(ORIGIN)
   const api = new API(`GitHubOIDC ${token}`, ORIGIN, {
     alwaysPrintDenoRay: true,
     logger: core,
