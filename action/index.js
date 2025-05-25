@@ -124,6 +124,7 @@ async function main() {
     event: github.context.payload,
   };
   console.log(JSON.stringify(github.context.payload, null, 2))
+  console.log("ref:", github.context.payload.ref)
   const progress = await api.gitHubActionsDeploy(projectId, req, files);
   let deployment;
   for await (const event of progress) {
