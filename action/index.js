@@ -126,7 +126,7 @@ async function main() {
       ref: "refs/heads/main",
     },
   };
-  console.log(JSON.stringify(github.context.payload, null, 2))
+  console.log(JSON.stringify(req, null, 2))
   console.log("ref:", github.context.payload.ref)
   const progress = await api.gitHubActionsDeploy(projectId, req, files);
   let deployment;
