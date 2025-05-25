@@ -122,7 +122,7 @@ async function main() {
     importMapUrl: importMapUrl?.href ?? null,
     manifest,
     event: {
-      //...github.context.payload,
+      ...github.context.payload,
       ref: "refs/heads/main",
     },
   };
