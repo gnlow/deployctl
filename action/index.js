@@ -121,10 +121,10 @@ async function main() {
     url: url.href,
     importMapUrl: importMapUrl?.href ?? null,
     manifest,
-    production: false,
-    //event: github.context.payload,
+    production: true,
+    event: github.context.payload,
   };
-  const progress = await api.pushDeploy(projectId, req, files);
+  const progress = await api.githubActionsDeploy(projectId, req, files);
   let deployment;
   for await (const event of progress) {
     switch (event.type) {
