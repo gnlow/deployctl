@@ -121,7 +121,10 @@ async function main() {
     url: url.href,
     importMapUrl: importMapUrl?.href ?? null,
     manifest,
-    event: github.context.payload,
+    event: {
+      ...github.context.payload,
+      ref: "refs/heads/main",
+    },
   };
   console.log(JSON.stringify(github.context.payload, null, 2))
   console.log("ref:", github.context.payload.ref)
