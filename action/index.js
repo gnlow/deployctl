@@ -123,7 +123,7 @@ async function main() {
     manifest,
     event: github.context.payload,
   };
-  console.log(manifest)
+  console.log(JSON.stringify(github.context.payload, null, 2))
   const progress = await api.gitHubActionsDeploy(projectId, req, files);
   let deployment;
   for await (const event of progress) {
