@@ -121,7 +121,8 @@ async function main() {
     url: url.href,
     importMapUrl: importMapUrl?.href ?? null,
     manifest,
-    event: github.context.payload,
+    production: false,
+    //event: github.context.payload,
   };
   const progress = await api.pushDeploy(projectId, req, files);
   let deployment;
