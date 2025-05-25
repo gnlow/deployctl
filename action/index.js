@@ -90,6 +90,7 @@ async function main() {
   );
   core.debug(`Discovered ${assets.size} assets`);
 
+  console.log(ORIGIN)
   const api = new API(`GitHubOIDC ${token}`, ORIGIN, {
     alwaysPrintDenoRay: true,
     logger: core,
@@ -121,8 +122,13 @@ async function main() {
     url: url.href,
     importMapUrl: importMapUrl?.href ?? null,
     manifest,
-    event: github.context.payload,
+    event: {
+      ...github.context.payload,
+      ref: "refs/heads/main",
+    },
   };
+  console.log(JSON.stringify(req, null, 2))
+  console.log("ref:", github.context.payload.ref)
   const progress = await api.gitHubActionsDeploy(projectId, req, files);
   let deployment;
   for await (const event of progress) {
